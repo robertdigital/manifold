@@ -31,7 +31,7 @@ $neutral40hex: str-slice(#{$neutral40}, 2);
 $neutralOffWhite: $neutral05;
 $neutralOffBlack: $neutral90;
 
-$accentPrimary: #52e3ac !default;
+$accentPrimary: #88ac2e !default;
 $accentPrimaryDark: darken(desaturate($accentPrimary, 20.97), 18.82) !default; // #34a178
 $accentPrimaryMedium: darken(desaturate($accentPrimary, 20.94), 11.57) !default; // #3dbd8c
 $accentPrimaryLight: lighten(saturate($accentPrimary, 0.36), 8.04) !default; // #75e9bd
@@ -50,7 +50,7 @@ $accentPrimaryHex: str-slice(#{$accentPrimary}, 2);
 // Color spectra are number by group and then given ordinal names, attributes
 
 // SP 20 Reader Annotations, Highlighting, Labels
-$sp20Primary: #2bd1fa !default; // #2bd1fa;
+$sp20Primary: #42B68A !default; // #2bd1fa;
 $sp20PrimaryLight: lighten(desaturate($sp20Primary, 13.25), 20.59); // #99e3f5;
 $sp20PrimaryPale: lighten(desaturate(adjust-hue($sp20Primary, -1), 14.44), 34.31); // #d9f5fb;
 $sp20PrimaryPaleLowContrast: darken(desaturate(adjust-hue($sp20Primary, 15), 83.5), 1.96); // #808f9b;
@@ -58,12 +58,12 @@ $sp20PrimaryPaleLowContrast: darken(desaturate(adjust-hue($sp20Primary, 15), 83.
 $sp20Secondary: #70c930;
 $sp20SecondaryLight: #c6eaac;
 $sp20SecondaryPale: #eaf7e0;
-$sp20SecondaryPaleLowContrast: #677b61;
+$sp20SecondaryPaleLowContrast: #eaf7e0;
 
-$sp20Tertiary: #ff12ff;
-$sp20TertiaryLight: #edaaed;
-$sp20TertiaryPale: #f4dcf4;
-$sp20TertiaryPaleLowContrast: #775e77;
+$sp20Tertiary: #fbae3c;
+$sp20TertiaryLight: #fdd69d;
+$sp20TertiaryPale: #fde6c4;
+$sp20TertiaryPaleLowContrast: #7d571e;
 
 $sp20Quaternary: #fffd73;
 
