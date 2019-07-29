@@ -47,7 +47,7 @@ class FormOptionsList extends PureComponent {
         label={props.label}
         onSelect={this.handleSelect}
         mode={props.mode}
-        selectedValue={props.selectedValue}
+        selectedOption={props.selectedOption}
       />
     );
   }
