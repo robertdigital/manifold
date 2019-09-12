@@ -1,0 +1,3356 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Manifold",
+    "version": "v1"
+  },
+  "host": "localhost:3020",
+  "basePath": "/api/v1",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/comments/{id}": {
+      "get": {
+        "summary": "Returns the Comment with the given ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Comments"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the Comment with the matching ID",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "comments"
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "body": {
+                          "type": "string"
+                        },
+                        "parentId": {
+                          "type": "string",
+                          "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "flagsCount": {
+                          "type": "integer"
+                        },
+                        "flagged": {
+                          "type": "boolean"
+                        },
+                        "abilities": {
+                          "type": "object",
+                          "properties": {
+                            "create": {
+                              "type": "boolean"
+                            },
+                            "read": {
+                              "type": "boolean"
+                            },
+                            "update": {
+                              "type": "boolean"
+                            },
+                            "delete": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "deleted": {
+                          "type": "boolean"
+                        },
+                        "childrenCount": {
+                          "type": "integer"
+                        },
+                        "sortOrder": {
+                          "type": "integer"
+                        },
+                        "authorCreated": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "creator": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                            },
+                            "type": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "partial": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Access denied for unauthorized users"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Updates the Comment with the given ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "update",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "body": {
+                          "type": "string"
+                        },
+                        "flagged": {
+                          "type": "boolean"
+                        },
+                        "deleted": {
+                          "type": "boolean"
+                        },
+                        "sortOrder": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "apiKey": [
+
+            ]
+          }
+        ],
+        "tags": [
+          "Comments"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the updated Comment",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "comments"
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "body": {
+                          "type": "string"
+                        },
+                        "parentId": {
+                          "type": "string",
+                          "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "flagsCount": {
+                          "type": "integer"
+                        },
+                        "flagged": {
+                          "type": "boolean"
+                        },
+                        "abilities": {
+                          "type": "object",
+                          "properties": {
+                            "create": {
+                              "type": "boolean"
+                            },
+                            "read": {
+                              "type": "boolean"
+                            },
+                            "update": {
+                              "type": "boolean"
+                            },
+                            "delete": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "deleted": {
+                          "type": "boolean"
+                        },
+                        "childrenCount": {
+                          "type": "integer"
+                        },
+                        "sortOrder": {
+                          "type": "integer"
+                        },
+                        "authorCreated": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "creator": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                            },
+                            "type": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "partial": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied for unauthorized users"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Removes the Comment with the given ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "apiKey": [
+
+            ]
+          }
+        ],
+        "tags": [
+          "Comments"
+        ],
+        "responses": {
+          "204": {
+            "description": "Removes the Comment"
+          },
+          "403": {
+            "description": "Access denied for unauthorized users"
+          }
+        }
+      }
+    },
+    "/comments": {
+      "post": {
+        "summary": "Creates a Project",
+        "parameters": [
+          {
+            "name": "create",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "subtitle": {
+                          "type": "string"
+                        },
+                        "publicationDate": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "avatar": {
+                          "type": "object",
+                          "properties": {
+                            "filename": {
+                              "type": "boolean"
+                            },
+                            "data": {
+                              "type": "string"
+                            },
+                            "contentType": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "hero": {
+                          "type": "object",
+                          "properties": {
+                            "filename": {
+                              "type": "boolean"
+                            },
+                            "data": {
+                              "type": "string"
+                            },
+                            "contentType": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "updated": {
+                          "type": "boolean"
+                        },
+                        "pendingSlug": {
+                          "type": "string"
+                        },
+                        "avatarColor": {
+                          "type": "string",
+                          "enum": [
+                            "primary",
+                            "secondary",
+                            "tertiary",
+                            "quaternary",
+                            "quinary",
+                            "sentary"
+                          ]
+                        },
+                        "draft": {
+                          "type": "boolean"
+                        },
+                        "standaloneMode": {
+                          "type": "string",
+                          "enum": [
+                            "disabled",
+                            "enabled",
+                            "enforced"
+                          ]
+                        },
+                        "standaloneModePressBarText": {
+                          "type": "string"
+                        },
+                        "standaloneModePressBarUrl": {
+                          "type": "string",
+                          "example": "http://some-website.com"
+                        },
+                        "hashtag": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "featured": {
+                          "type": "boolean"
+                        },
+                        "purchaseCallToAction": {
+                          "type": "string"
+                        },
+                        "twitterId": {
+                          "type": "string"
+                        },
+                        "instagramId": {
+                          "type": "string"
+                        },
+                        "facebookId": {
+                          "type": "string"
+                        },
+                        "cover": {
+                          "type": "object",
+                          "properties": {
+                            "filename": {
+                              "type": "boolean"
+                            },
+                            "data": {
+                              "type": "string"
+                            },
+                            "contentType": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "descriptionFormatted": {
+                          "type": "string"
+                        },
+                        "darkMode": {
+                          "type": "boolean"
+                        },
+                        "imageCredits": {
+                          "type": "string"
+                        },
+                        "tagList": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "TKTKTKT"
+                        },
+                        "metadata": {
+                          "type": "object"
+                        },
+                        "resourcesCount": {
+                          "type": "integer"
+                        },
+                        "citations": {
+                          "type": "object",
+                          "description": "Citations of the book in a veriety of formats (mla, chicago, apa, etc.)"
+                        },
+                        "hideAactivity": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "apiKey": [
+
+            ]
+          }
+        ],
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "201": {
+            "description": "Returns the created Project object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "projects"
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "body": {
+                          "type": "string"
+                        },
+                        "parentId": {
+                          "type": "string",
+                          "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "flagsCount": {
+                          "type": "integer"
+                        },
+                        "flagged": {
+                          "type": "boolean"
+                        },
+                        "abilities": {
+                          "type": "object",
+                          "properties": {
+                            "create": {
+                              "type": "boolean"
+                            },
+                            "read": {
+                              "type": "boolean"
+                            },
+                            "update": {
+                              "type": "boolean"
+                            },
+                            "delete": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "deleted": {
+                          "type": "boolean"
+                        },
+                        "childrenCount": {
+                          "type": "integer"
+                        },
+                        "sortOrder": {
+                          "type": "integer"
+                        },
+                        "authorCreated": {
+                          "type": "boolean"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "subtitle": {
+                          "type": "string"
+                        },
+                        "publicationDate": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "avatarStyles": {
+                          "type": "object",
+                          "properties": {
+                            "small": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "medium": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "largeLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "original": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            }
+                          }
+                        },
+                        "heroStyles": {
+                          "type": "object",
+                          "properties": {
+                            "small": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "medium": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "largeLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "original": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            }
+                          }
+                        },
+                        "recentlyUpdated": {
+                          "type": "boolean"
+                        },
+                        "updated": {
+                          "type": "boolean"
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "avatarColor": {
+                          "type": "string",
+                          "enum": [
+                            "primary",
+                            "secondary",
+                            "tertiary",
+                            "quaternary",
+                            "quinary",
+                            "sentary"
+                          ]
+                        },
+                        "avatarMeta": {
+                          "type": "object",
+                          "description": "translation missing: en.attributes.descriptions.avatarMeta"
+                        },
+                        "draft": {
+                          "type": "boolean"
+                        },
+                        "subtitleFormatted": {
+                          "type": "string"
+                        },
+                        "titleFormatted": {
+                          "type": "string"
+                        },
+                        "titlePlaintext": {
+                          "type": "string"
+                        },
+                        "standaloneMode": {
+                          "type": "string",
+                          "enum": [
+                            "disabled",
+                            "enabled",
+                            "enforced"
+                          ]
+                        },
+                        "standaloneModePressBarText": {
+                          "type": "string"
+                        },
+                        "standaloneModePressBarUrl": {
+                          "type": "string",
+                          "example": "http://some-website.com"
+                        },
+                        "hashtag": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "featured": {
+                          "type": "boolean"
+                        },
+                        "purchaseCallToAction": {
+                          "type": "string"
+                        },
+                        "twitterId": {
+                          "type": "string"
+                        },
+                        "instagramId": {
+                          "type": "string"
+                        },
+                        "facebookId": {
+                          "type": "string"
+                        },
+                        "coverStyles": {
+                          "type": "object",
+                          "properties": {
+                            "small": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "medium": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "largeLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "original": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            }
+                          }
+                        },
+                        "descriptionFormatted": {
+                          "type": "string"
+                        },
+                        "resourceKinds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "TKTKTKT"
+                        },
+                        "resourceTags": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "TKTKTKT"
+                        },
+                        "darkMode": {
+                          "type": "boolean"
+                        },
+                        "imageCredits": {
+                          "type": "string"
+                        },
+                        "imageCreditsFormatted": {
+                          "type": "string"
+                        },
+                        "tagList": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "TKTKTKT"
+                        },
+                        "eventCount": {
+                          "type": "integer"
+                        },
+                        "metadata": {
+                          "type": "object"
+                        },
+                        "resourceCollectionsCount": {
+                          "type": "integer"
+                        },
+                        "resourcesCount": {
+                          "type": "integer"
+                        },
+                        "eventTypes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "metadataProperties": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "citations": {
+                          "type": "object",
+                          "description": "Citations of the book in a veriety of formats (mla, chicago, apa, etc.)"
+                        },
+                        "hideAactivity": {
+                          "type": "boolean"
+                        },
+                        "metadataFormatted": {
+                          "type": "object",
+                          "description": "TKTKTKTKTK Seems to be the exact same thing as metadata"
+                        }
+                      }
+                    },
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "creator": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                            },
+                            "type": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "actionCallouts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "action_callouts"
+                              }
+                            }
+                          }
+                        },
+                        "contentBlocks": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "content_blocks"
+                              }
+                            }
+                          }
+                        },
+                        "contributors": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "contributors"
+                              }
+                            }
+                          }
+                        },
+                        "creators": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "creators"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "events"
+                              }
+                            }
+                          }
+                        },
+                        "publishedTexts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "texts"
+                              }
+                            }
+                          }
+                        },
+                        "resourceCollections": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "resource_collections"
+                              }
+                            }
+                          }
+                        },
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "resources"
+                              }
+                            }
+                          }
+                        },
+                        "subjects": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "subjects"
+                              }
+                            }
+                          }
+                        },
+                        "textCategories": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "text_categories"
+                              }
+                            }
+                          }
+                        },
+                        "texts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "texts"
+                              }
+                            }
+                          }
+                        },
+                        "twitterQueries": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "twitter_queries"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "partial": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied for unauthorized users"
+          }
+        }
+      }
+    },
+    "/projects/{project_id}/relationships/text_categories": {
+      "get": {
+        "summary": "Returns all TextCategories",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Text Categories"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns an array of TextCategory objects",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "text_categories"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "type": "string"
+                          },
+                          "position": {
+                            "type": "integer"
+                          },
+                          "abilities": {
+                            "type": "object",
+                            "properties": {
+                              "create": {
+                                "type": "boolean"
+                              },
+                              "read": {
+                                "type": "boolean"
+                              },
+                              "update": {
+                                "type": "boolean"
+                              },
+                              "delete": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "relationships": {
+                        "type": "object",
+                        "properties": {
+                          "project": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "partial": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a TextCategory",
+        "parameters": [
+          {
+            "name": "create",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "position": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "apiKey": [
+
+            ]
+          }
+        ],
+        "tags": [
+          "Text Categories"
+        ],
+        "responses": {
+          "201": {
+            "description": "Returns the created TextCategory object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "text_categories"
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "position": {
+                          "type": "integer"
+                        },
+                        "abilities": {
+                          "type": "object",
+                          "properties": {
+                            "create": {
+                              "type": "boolean"
+                            },
+                            "read": {
+                              "type": "boolean"
+                            },
+                            "update": {
+                              "type": "boolean"
+                            },
+                            "delete": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "project": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                            },
+                            "type": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "partial": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied for unauthorized users"
+          }
+        }
+      }
+    },
+    "/projects/{id}": {
+      "get": {
+        "summary": "Returns the Project with the given ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the Project with the matching ID",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "projects"
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "subtitle": {
+                          "type": "string"
+                        },
+                        "publicationDate": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "avatarStyles": {
+                          "type": "object",
+                          "properties": {
+                            "small": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "medium": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "largeLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "original": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            }
+                          }
+                        },
+                        "heroStyles": {
+                          "type": "object",
+                          "properties": {
+                            "small": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "medium": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "largeLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "original": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            }
+                          }
+                        },
+                        "recentlyUpdated": {
+                          "type": "boolean"
+                        },
+                        "updated": {
+                          "type": "boolean"
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "avatarColor": {
+                          "type": "string",
+                          "enum": [
+                            "primary",
+                            "secondary",
+                            "tertiary",
+                            "quaternary",
+                            "quinary",
+                            "sentary"
+                          ]
+                        },
+                        "avatarMeta": {
+                          "type": "object",
+                          "description": "translation missing: en.attributes.descriptions.avatarMeta"
+                        },
+                        "draft": {
+                          "type": "boolean"
+                        },
+                        "abilities": {
+                          "type": "object",
+                          "properties": {
+                            "create": {
+                              "type": "boolean"
+                            },
+                            "read": {
+                              "type": "boolean"
+                            },
+                            "update": {
+                              "type": "boolean"
+                            },
+                            "delete": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "subtitleFormatted": {
+                          "type": "string"
+                        },
+                        "titleFormatted": {
+                          "type": "string"
+                        },
+                        "titlePlaintext": {
+                          "type": "string"
+                        },
+                        "standaloneMode": {
+                          "type": "string",
+                          "enum": [
+                            "disabled",
+                            "enabled",
+                            "enforced"
+                          ]
+                        },
+                        "standaloneModePressBarText": {
+                          "type": "string"
+                        },
+                        "standaloneModePressBarUrl": {
+                          "type": "string",
+                          "example": "http://some-website.com"
+                        },
+                        "hashtag": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "featured": {
+                          "type": "boolean"
+                        },
+                        "purchaseCallToAction": {
+                          "type": "string"
+                        },
+                        "twitterId": {
+                          "type": "string"
+                        },
+                        "instagramId": {
+                          "type": "string"
+                        },
+                        "facebookId": {
+                          "type": "string"
+                        },
+                        "coverStyles": {
+                          "type": "object",
+                          "properties": {
+                            "small": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "medium": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "largeLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "original": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            }
+                          }
+                        },
+                        "descriptionFormatted": {
+                          "type": "string"
+                        },
+                        "resourceKinds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "TKTKTKT"
+                        },
+                        "resourceTags": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "TKTKTKT"
+                        },
+                        "darkMode": {
+                          "type": "boolean"
+                        },
+                        "imageCredits": {
+                          "type": "string"
+                        },
+                        "imageCreditsFormatted": {
+                          "type": "string"
+                        },
+                        "tagList": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "TKTKTKT"
+                        },
+                        "eventCount": {
+                          "type": "integer"
+                        },
+                        "metadata": {
+                          "type": "object"
+                        },
+                        "resourceCollectionsCount": {
+                          "type": "integer"
+                        },
+                        "resourcesCount": {
+                          "type": "integer"
+                        },
+                        "eventTypes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "metadataProperties": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "citations": {
+                          "type": "object",
+                          "description": "Citations of the book in a veriety of formats (mla, chicago, apa, etc.)"
+                        },
+                        "hideAactivity": {
+                          "type": "boolean"
+                        },
+                        "metadataFormatted": {
+                          "type": "object",
+                          "description": "TKTKTKTKTK Seems to be the exact same thing as metadata"
+                        }
+                      }
+                    },
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "actionCallouts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "action_callouts"
+                              }
+                            }
+                          }
+                        },
+                        "contentBlocks": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "content_blocks"
+                              }
+                            }
+                          }
+                        },
+                        "contributors": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "contributors"
+                              }
+                            }
+                          }
+                        },
+                        "creators": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "creators"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "events"
+                              }
+                            }
+                          }
+                        },
+                        "publishedTexts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "texts"
+                              }
+                            }
+                          }
+                        },
+                        "resourceCollections": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "resource_collections"
+                              }
+                            }
+                          }
+                        },
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "resources"
+                              }
+                            }
+                          }
+                        },
+                        "subjects": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "subjects"
+                              }
+                            }
+                          }
+                        },
+                        "textCategories": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "text_categories"
+                              }
+                            }
+                          }
+                        },
+                        "texts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "texts"
+                              }
+                            }
+                          }
+                        },
+                        "twitterQueries": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "twitter_queries"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "partial": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Access denied for unauthorized users"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Updates the Project with the given ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "update",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "subtitle": {
+                          "type": "string"
+                        },
+                        "publicationDate": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "avatar": {
+                          "type": "object",
+                          "properties": {
+                            "filename": {
+                              "type": "boolean"
+                            },
+                            "data": {
+                              "type": "string"
+                            },
+                            "contentType": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "hero": {
+                          "type": "object",
+                          "properties": {
+                            "filename": {
+                              "type": "boolean"
+                            },
+                            "data": {
+                              "type": "string"
+                            },
+                            "contentType": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "updated": {
+                          "type": "boolean"
+                        },
+                        "pendingSlug": {
+                          "type": "string"
+                        },
+                        "avatarColor": {
+                          "type": "string",
+                          "enum": [
+                            "primary",
+                            "secondary",
+                            "tertiary",
+                            "quaternary",
+                            "quinary",
+                            "sentary"
+                          ]
+                        },
+                        "draft": {
+                          "type": "boolean"
+                        },
+                        "standaloneMode": {
+                          "type": "string",
+                          "enum": [
+                            "disabled",
+                            "enabled",
+                            "enforced"
+                          ]
+                        },
+                        "standaloneModePressBarText": {
+                          "type": "string"
+                        },
+                        "standaloneModePressBarUrl": {
+                          "type": "string",
+                          "example": "http://some-website.com"
+                        },
+                        "hashtag": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "featured": {
+                          "type": "boolean"
+                        },
+                        "purchaseCallToAction": {
+                          "type": "string"
+                        },
+                        "twitterId": {
+                          "type": "string"
+                        },
+                        "instagramId": {
+                          "type": "string"
+                        },
+                        "facebookId": {
+                          "type": "string"
+                        },
+                        "cover": {
+                          "type": "object",
+                          "properties": {
+                            "filename": {
+                              "type": "boolean"
+                            },
+                            "data": {
+                              "type": "string"
+                            },
+                            "contentType": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "descriptionFormatted": {
+                          "type": "string"
+                        },
+                        "darkMode": {
+                          "type": "boolean"
+                        },
+                        "imageCredits": {
+                          "type": "string"
+                        },
+                        "tagList": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "TKTKTKT"
+                        },
+                        "metadata": {
+                          "type": "object"
+                        },
+                        "resourcesCount": {
+                          "type": "integer"
+                        },
+                        "citations": {
+                          "type": "object",
+                          "description": "Citations of the book in a veriety of formats (mla, chicago, apa, etc.)"
+                        },
+                        "hideAactivity": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "apiKey": [
+
+            ]
+          }
+        ],
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the updated Project",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "projects"
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "subtitle": {
+                          "type": "string"
+                        },
+                        "publicationDate": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "avatarStyles": {
+                          "type": "object",
+                          "properties": {
+                            "small": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "medium": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "largeLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "original": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            }
+                          }
+                        },
+                        "heroStyles": {
+                          "type": "object",
+                          "properties": {
+                            "small": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "medium": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "largeLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "original": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            }
+                          }
+                        },
+                        "recentlyUpdated": {
+                          "type": "boolean"
+                        },
+                        "updated": {
+                          "type": "boolean"
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "avatarColor": {
+                          "type": "string",
+                          "enum": [
+                            "primary",
+                            "secondary",
+                            "tertiary",
+                            "quaternary",
+                            "quinary",
+                            "sentary"
+                          ]
+                        },
+                        "avatarMeta": {
+                          "type": "object",
+                          "description": "translation missing: en.attributes.descriptions.avatarMeta"
+                        },
+                        "draft": {
+                          "type": "boolean"
+                        },
+                        "abilities": {
+                          "type": "object",
+                          "properties": {
+                            "create": {
+                              "type": "boolean"
+                            },
+                            "read": {
+                              "type": "boolean"
+                            },
+                            "update": {
+                              "type": "boolean"
+                            },
+                            "delete": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "subtitleFormatted": {
+                          "type": "string"
+                        },
+                        "titleFormatted": {
+                          "type": "string"
+                        },
+                        "titlePlaintext": {
+                          "type": "string"
+                        },
+                        "standaloneMode": {
+                          "type": "string",
+                          "enum": [
+                            "disabled",
+                            "enabled",
+                            "enforced"
+                          ]
+                        },
+                        "standaloneModePressBarText": {
+                          "type": "string"
+                        },
+                        "standaloneModePressBarUrl": {
+                          "type": "string",
+                          "example": "http://some-website.com"
+                        },
+                        "hashtag": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "featured": {
+                          "type": "boolean"
+                        },
+                        "purchaseCallToAction": {
+                          "type": "string"
+                        },
+                        "twitterId": {
+                          "type": "string"
+                        },
+                        "instagramId": {
+                          "type": "string"
+                        },
+                        "facebookId": {
+                          "type": "string"
+                        },
+                        "coverStyles": {
+                          "type": "object",
+                          "properties": {
+                            "small": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "smallPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "medium": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumSquare": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "mediumPortrait": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "largeLandscape": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            },
+                            "original": {
+                              "type": "string",
+                              "example": "http://some-website.com"
+                            }
+                          }
+                        },
+                        "descriptionFormatted": {
+                          "type": "string"
+                        },
+                        "resourceKinds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "TKTKTKT"
+                        },
+                        "resourceTags": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "TKTKTKT"
+                        },
+                        "darkMode": {
+                          "type": "boolean"
+                        },
+                        "imageCredits": {
+                          "type": "string"
+                        },
+                        "imageCreditsFormatted": {
+                          "type": "string"
+                        },
+                        "tagList": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "TKTKTKT"
+                        },
+                        "eventCount": {
+                          "type": "integer"
+                        },
+                        "metadata": {
+                          "type": "object"
+                        },
+                        "resourceCollectionsCount": {
+                          "type": "integer"
+                        },
+                        "resourcesCount": {
+                          "type": "integer"
+                        },
+                        "eventTypes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "metadataProperties": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "citations": {
+                          "type": "object",
+                          "description": "Citations of the book in a veriety of formats (mla, chicago, apa, etc.)"
+                        },
+                        "hideAactivity": {
+                          "type": "boolean"
+                        },
+                        "metadataFormatted": {
+                          "type": "object",
+                          "description": "TKTKTKTKTK Seems to be the exact same thing as metadata"
+                        }
+                      }
+                    },
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "actionCallouts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "action_callouts"
+                              }
+                            }
+                          }
+                        },
+                        "contentBlocks": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "content_blocks"
+                              }
+                            }
+                          }
+                        },
+                        "contributors": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "contributors"
+                              }
+                            }
+                          }
+                        },
+                        "creators": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "creators"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "events"
+                              }
+                            }
+                          }
+                        },
+                        "publishedTexts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "texts"
+                              }
+                            }
+                          }
+                        },
+                        "resourceCollections": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "resource_collections"
+                              }
+                            }
+                          }
+                        },
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "resources"
+                              }
+                            }
+                          }
+                        },
+                        "subjects": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "subjects"
+                              }
+                            }
+                          }
+                        },
+                        "textCategories": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "text_categories"
+                              }
+                            }
+                          }
+                        },
+                        "texts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "texts"
+                              }
+                            }
+                          }
+                        },
+                        "twitterQueries": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                              },
+                              "type": {
+                                "type": "string",
+                                "example": "twitter_queries"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "partial": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied for unauthorized users"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Removes the Project with the given ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "apiKey": [
+
+            ]
+          }
+        ],
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "204": {
+            "description": "Removes the Project"
+          },
+          "403": {
+            "description": "Access denied for unauthorized users"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Comment": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+            },
+            "type": {
+              "type": "string",
+              "example": "comments"
+            },
+            "attributes": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "type": "string"
+                },
+                "parentId": {
+                  "type": "string",
+                  "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "flagsCount": {
+                  "type": "integer"
+                },
+                "flagged": {
+                  "type": "boolean"
+                },
+                "abilities": {
+                  "type": "object",
+                  "properties": {
+                    "create": {
+                      "type": "boolean"
+                    },
+                    "read": {
+                      "type": "boolean"
+                    },
+                    "update": {
+                      "type": "boolean"
+                    },
+                    "delete": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "deleted": {
+                  "type": "boolean"
+                },
+                "childrenCount": {
+                  "type": "integer"
+                },
+                "sortOrder": {
+                  "type": "integer"
+                },
+                "authorCreated": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "relationships": {
+              "type": "object",
+              "properties": {
+                "creator": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "meta": {
+              "type": "object",
+              "properties": {
+                "partial": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Project": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+            },
+            "type": {
+              "type": "string",
+              "example": "projects"
+            },
+            "attributes": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "subtitle": {
+                  "type": "string"
+                },
+                "publicationDate": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "avatarStyles": {
+                  "type": "object",
+                  "properties": {
+                    "small": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "smallSquare": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "smallLandscape": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "smallPortrait": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "medium": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "mediumSquare": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "mediumLandscape": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "mediumPortrait": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "largeLandscape": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "original": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    }
+                  }
+                },
+                "heroStyles": {
+                  "type": "object",
+                  "properties": {
+                    "small": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "smallSquare": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "smallLandscape": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "smallPortrait": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "medium": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "mediumSquare": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "mediumLandscape": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "mediumPortrait": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "largeLandscape": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "original": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    }
+                  }
+                },
+                "recentlyUpdated": {
+                  "type": "boolean"
+                },
+                "updated": {
+                  "type": "boolean"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "avatarColor": {
+                  "type": "string",
+                  "enum": [
+                    "primary",
+                    "secondary",
+                    "tertiary",
+                    "quaternary",
+                    "quinary",
+                    "sentary"
+                  ]
+                },
+                "avatarMeta": {
+                  "type": "object",
+                  "description": "translation missing: en.attributes.descriptions.avatarMeta"
+                },
+                "draft": {
+                  "type": "boolean"
+                },
+                "abilities": {
+                  "type": "object",
+                  "properties": {
+                    "create": {
+                      "type": "boolean"
+                    },
+                    "read": {
+                      "type": "boolean"
+                    },
+                    "update": {
+                      "type": "boolean"
+                    },
+                    "delete": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "subtitleFormatted": {
+                  "type": "string"
+                },
+                "titleFormatted": {
+                  "type": "string"
+                },
+                "titlePlaintext": {
+                  "type": "string"
+                },
+                "standaloneMode": {
+                  "type": "string",
+                  "enum": [
+                    "disabled",
+                    "enabled",
+                    "enforced"
+                  ]
+                },
+                "standaloneModePressBarText": {
+                  "type": "string"
+                },
+                "standaloneModePressBarUrl": {
+                  "type": "string",
+                  "example": "http://some-website.com"
+                },
+                "hashtag": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "featured": {
+                  "type": "boolean"
+                },
+                "purchaseCallToAction": {
+                  "type": "string"
+                },
+                "twitterId": {
+                  "type": "string"
+                },
+                "instagramId": {
+                  "type": "string"
+                },
+                "facebookId": {
+                  "type": "string"
+                },
+                "coverStyles": {
+                  "type": "object",
+                  "properties": {
+                    "small": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "smallSquare": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "smallLandscape": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "smallPortrait": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "medium": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "mediumSquare": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "mediumLandscape": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "mediumPortrait": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "largeLandscape": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    },
+                    "original": {
+                      "type": "string",
+                      "example": "http://some-website.com"
+                    }
+                  }
+                },
+                "descriptionFormatted": {
+                  "type": "string"
+                },
+                "resourceKinds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "TKTKTKT"
+                },
+                "resourceTags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "TKTKTKT"
+                },
+                "darkMode": {
+                  "type": "boolean"
+                },
+                "imageCredits": {
+                  "type": "string"
+                },
+                "imageCreditsFormatted": {
+                  "type": "string"
+                },
+                "tagList": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "TKTKTKT"
+                },
+                "eventCount": {
+                  "type": "integer"
+                },
+                "metadata": {
+                  "type": "object"
+                },
+                "resourceCollectionsCount": {
+                  "type": "integer"
+                },
+                "resourcesCount": {
+                  "type": "integer"
+                },
+                "eventTypes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "metadataProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "citations": {
+                  "type": "object",
+                  "description": "Citations of the book in a veriety of formats (mla, chicago, apa, etc.)"
+                },
+                "hideAactivity": {
+                  "type": "boolean"
+                },
+                "metadataFormatted": {
+                  "type": "object",
+                  "description": "TKTKTKTKTK Seems to be the exact same thing as metadata"
+                }
+              }
+            },
+            "relationships": {
+              "type": "object",
+              "properties": {
+                "actionCallouts": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "action_callouts"
+                      }
+                    }
+                  }
+                },
+                "contentBlocks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "content_blocks"
+                      }
+                    }
+                  }
+                },
+                "contributors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "contributors"
+                      }
+                    }
+                  }
+                },
+                "creators": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "creators"
+                      }
+                    }
+                  }
+                },
+                "events": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "events"
+                      }
+                    }
+                  }
+                },
+                "publishedTexts": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "texts"
+                      }
+                    }
+                  }
+                },
+                "resourceCollections": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "resource_collections"
+                      }
+                    }
+                  }
+                },
+                "resources": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "resources"
+                      }
+                    }
+                  }
+                },
+                "subjects": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "subjects"
+                      }
+                    }
+                  }
+                },
+                "textCategories": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "text_categories"
+                      }
+                    }
+                  }
+                },
+                "texts": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "texts"
+                      }
+                    }
+                  }
+                },
+                "twitterQueries": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "twitter_queries"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "meta": {
+              "type": "object",
+              "properties": {
+                "partial": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "TextCategory": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+            },
+            "type": {
+              "type": "string",
+              "example": "text_categories"
+            },
+            "attributes": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "position": {
+                  "type": "integer"
+                },
+                "abilities": {
+                  "type": "object",
+                  "properties": {
+                    "create": {
+                      "type": "boolean"
+                    },
+                    "read": {
+                      "type": "boolean"
+                    },
+                    "update": {
+                      "type": "boolean"
+                    },
+                    "delete": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            },
+            "relationships": {
+              "type": "object",
+              "properties": {
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "meta": {
+              "type": "object",
+              "properties": {
+                "partial": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
