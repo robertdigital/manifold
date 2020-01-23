@@ -489,7 +489,7 @@ module Validation
       :search_num,
       :scope,
       facets: [],
-      page: [:number]
+      page: [:number, :size]
     )
   end
 

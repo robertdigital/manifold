@@ -3,23 +3,50 @@ module V1
 
     include ::V1::Concerns::ManifoldSerializer
 
-    typed_attribute :score, NilClass, &:_score
-    typed_attribute :searchable_id, NilClass, &:_id
-    typed_attribute :full_text, NilClass
-    typed_attribute :title, NilClass
-    typed_attribute :keywords, NilClass
-    typed_attribute :parent_keywords, NilClass
-    typed_attribute :makers, NilClass
-    typed_attribute :searchable_type, NilClass do |object, _params|
+    typed_attribute :score, Types::Float, &:_score
+    typed_attribute :searchable_id, Types::Serializer::ID, &:_id
+    typed_attribute :full_text, Types::String.optional # TODO: check type
+    typed_attribute :title, Types::String
+    typed_attribute :keywords, Types::String.optional # TODO: check type
+    typed_attribute :parent_keywords, Types::Array.of(Types::String) # TODO: check type
+    typed_attribute :makers, Types::Array.of(Types::String) # TODO: check type
+    typed_attribute :searchable_type, Types::String.meta(example: "textSection") do |object, _params|
       camelized_type(object)
     end
-    typed_attribute :parents, NilClass do |object, _params|
+    typed_attribute :parents, Types::Hash.schema(
+      text: Types::Hash.schema(
+        title: Types::String,
+        slug: Types::String,
+        id: Types::Serializer::ID
+      ),
+      project: Types::Hash.schema(
+        title: Types::String,
+        slug: Types::String,
+        id: Types::Serializer::ID
+      )
+    ) do |object, _params|
       parents(object)
     end
-    typed_attribute :text_nodes, NilClass do |object, _params|
+    typed_attribute :text_nodes, Types::Hash.schema(
+      total: Types::Integer,
+      hits: Types::Array.of(
+        Types::Hash.schema(
+          content: Types::String,
+          content_highlighted: Types::Array.of(Types::String),
+          node_uuid: Types::String,
+          position: Types::Integer
+        )
+      )
+    ) do |object, _params|
       text_nodes(object)
     end
-    typed_attribute :highlights, NilClass do |object, _params|
+    typed_attribute :highlights, Types::Hash.schema(
+      parent_keywords: Types::String.optional, # TOOD: check type
+      keywords: Types::String.optional, # TOOD: check type
+      makers: Types::String.optional, # TOOD: check type
+      full_text: Types::String.optional, # TOOD: check type
+      title: Types::String.optional # TOOD: check type
+    ) do |object, _params|
       highlights(object)
     end
 
