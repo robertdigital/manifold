@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_29_200459) do
+ActiveRecord::Schema.define(version: 2020_01_27_205935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -517,12 +517,12 @@ ActiveRecord::Schema.define(version: 2019_12_29_200459) do
     t.string "avatar_content_type_deprecated"
     t.integer "avatar_file_size_deprecated"
     t.datetime "avatar_updated_at_deprecated"
-    t.jsonb "metadata", default: {}
+    t.jsonb "metadata", default: {}, null: false
     t.uuid "creator_id"
     t.date "publication_date"
     t.string "slug"
     t.string "avatar_color", default: "primary"
-    t.jsonb "citations", default: {}
+    t.jsonb "citations", default: {}, null: false
     t.boolean "draft", default: true, null: false
     t.boolean "hide_activity", default: false
     t.citext "sort_title"
@@ -709,7 +709,7 @@ ActiveRecord::Schema.define(version: 2019_12_29_200459) do
     t.string "sub_kind"
     t.string "slug"
     t.integer "comments_count", default: 0
-    t.jsonb "metadata", default: {}
+    t.jsonb "metadata", default: {}, null: false
     t.integer "events_count", default: 0
     t.integer "minimum_width"
     t.integer "minimum_height"
@@ -849,7 +849,7 @@ ActiveRecord::Schema.define(version: 2019_12_29_200459) do
     t.string "kind"
     t.uuid "ingestion_source_id"
     t.jsonb "body_json", default: "{}", null: false
-    t.jsonb "citations", default: {}
+    t.jsonb "citations", default: {}, null: false
     t.index ["ingestion_source_id"], name: "index_text_sections_on_ingestion_source_id"
     t.index ["source_identifier"], name: "index_text_sections_on_source_identifier"
     t.index ["text_id"], name: "index_text_sections_on_text_id"
@@ -891,9 +891,9 @@ ActiveRecord::Schema.define(version: 2019_12_29_200459) do
     t.uuid "start_text_section_id"
     t.integer "position"
     t.string "spine", default: [], array: true
-    t.jsonb "metadata", default: {}
+    t.jsonb "metadata", default: {}, null: false
     t.string "slug"
-    t.jsonb "citations", default: {}
+    t.jsonb "citations", default: {}, null: false
     t.string "section_kind"
     t.integer "events_count", default: 0
     t.jsonb "cover_data", default: {}
