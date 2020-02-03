@@ -6,11 +6,14 @@ class ProjectExportation < ApplicationRecord
   include Authority::Abilities
   include Concerns::HasStateMachine
   include Concerns::SerializedAbilitiesFor
+  include Filterable
 
   belongs_to :project, required: true
   belongs_to :export_target, required: true
   belongs_to :project_export, optional: true
   belongs_to :user, optional: true
+
+  default_scope { order(created_at: :desc) }
 
   has_state_machine! initial_state: :pending
 
