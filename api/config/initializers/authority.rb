@@ -48,6 +48,8 @@ Authority.configure do |config|
     read_deleted: "deleted_readable",
     read_drafts: "drafts_readable",
     list: "listable",
+    manage_exports: "exports_managable",
+    create_exports: "exports_creatable",
     manage_resources: "resources_manageable",
     create_resources: "resources_creatable",
     manage_resource_collections: "resource_collections_manageable",
