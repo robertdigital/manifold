@@ -20,6 +20,7 @@ exports[`backend/components/category/Form matches the snapshot 1`] = `
   <Form.Save
     text="Create Category"
     theme="backend"
+    wide={true}
   />
 </withRouter(Connect(HigherOrder.FetchData('Form.Form)))>
 `;

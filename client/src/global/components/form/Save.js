@@ -9,17 +9,21 @@ export default class FormSave extends Component {
   static propTypes = {
     text: PropTypes.string,
     cancelRoute: PropTypes.string,
-    theme: PropTypes.oneOf(["frontend", "backend", "reader"])
+    theme: PropTypes.oneOf(["frontend", "backend", "reader"]),
+    wide: PropTypes.bool
   };
 
   static defaultProps = {
     text: "Save",
-    theme: "backend"
+    theme: "backend",
+    wide: true
   };
 
   render() {
+    let buttonClasses = "form-input submit";
+    if (this.props.wide) buttonClasses += " wide";
     return (
-      <div className="form-input submit wide">
+      <div className={buttonClasses}>
         {this.props.cancelRoute ? (
           <Link
             to={this.props.cancelRoute}
