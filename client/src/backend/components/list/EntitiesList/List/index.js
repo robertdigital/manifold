@@ -148,6 +148,10 @@ export default class ListEntities extends PureComponent {
     return this.props.search;
   }
 
+  get showHeader() {
+    return this.hasButtons || this.showCount;
+  }
+
   get hasSearch() {
     return !isNil(this.search);
   }
@@ -235,16 +239,18 @@ export default class ListEntities extends PureComponent {
                 />
               )}
               {this.hasSearch && this.search}
-              <div className="entity-list__header">
-                {this.hasButtons && <ButtonSet buttons={this.buttons} />}
-                {this.showCount && (
-                  <Count
-                    showCount={this.showCount}
-                    unit={this.unit}
-                    pagination={this.pagination}
-                  />
-                )}
-              </div>
+              {this.showHeader && (
+                <div className="entity-list__header">
+                  {this.hasButtons && <ButtonSet buttons={this.buttons} />}
+                  {this.showCount && (
+                    <Count
+                      showCount={this.showCount}
+                      unit={this.unit}
+                      pagination={this.pagination}
+                    />
+                  )}
+                </div>
+              )}
               {!this.isSortable && (
                 <Entities
                   {...this.props}
