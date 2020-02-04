@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import Title from "./Title";
 import Instructions from "./Instructions";
-import Pagination from "./Pagination";
 import Count from "./Count";
 import ButtonSet from "./ButtonSet";
 import Entities from "./Entities";
@@ -12,6 +11,7 @@ import isPlainObject from "lodash/isPlainObject";
 import isFunction from "lodash/isFunction";
 import isBoolean from "lodash/isBoolean";
 import isNil from "lodash/isNil";
+import Utility from "global/components/utility";
 import { UID } from "react-uid";
 
 export default class ListEntities extends PureComponent {
@@ -129,7 +129,7 @@ export default class ListEntities extends PureComponent {
   }
 
   get paginationStyle() {
-    return this.props.paginationStyle;
+    return this.props.paginationStyle || "normal";
   }
 
   get unit() {
@@ -266,12 +266,14 @@ export default class ListEntities extends PureComponent {
                 />
               )}
               {this.pagination && (
-                <Pagination
-                  pagination={this.pagination}
-                  paginationTarget={`#${this.idPrefix}-${id}`}
-                  onPageClick={this.callback("onPageClick")}
-                  style={this.paginationStyle}
-                />
+                <div className="entity-list__pagination">
+                  <Utility.Pagination
+                    pagination={this.pagination}
+                    paginationTarget={`#${this.idPrefix}-${id}`}
+                    paginationClickHandler={this.callback("onPageClick")}
+                    compact={this.paginationStyle === "compact"}
+                  />
+                </div>
               )}
             </div>
           </div>
