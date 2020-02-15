@@ -53,6 +53,7 @@ export default {
   ProjectCollectionSettings: ProjectCollection.Settings,
   ProjectWrapper: Project.Wrapper,
   ProjectTexts: Project.Texts,
+  ProjectTextNew: Project.Text.New,
   ProjectTextIngestionNew: Project.Text.Ingestion.New,
   ProjectTextIngestionEdit: Project.Text.Ingestion.Edit,
   IngestionIngest: Ingestion.Ingest,

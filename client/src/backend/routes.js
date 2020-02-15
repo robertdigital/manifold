@@ -279,6 +279,14 @@ const routes = {
               helper: p => `/backend/projects/${p}/texts`,
               routes: [
                 {
+                  name: "backendProjectTextsNew",
+                  exact: true,
+                  component: "ProjectTextNew",
+                  path: "/backend/projects/:id/texts/new",
+                  helper: p => `/backend/projects/${p}/texts/new`,
+                  modal: true
+                },
+                {
                   name: "backendProjectTextsIngestionsNew",
                   exact: true,
                   component: "ProjectTextIngestionNew",

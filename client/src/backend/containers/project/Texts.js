@@ -69,6 +69,7 @@ export class ProjectTextsContainer extends Component {
   get buttonClasses() {
     return classNames(
       "buttons-icon-horizontal__button",
+      "buttons-icon-horizontal__button--thirds",
       "button-icon-secondary"
     );
   }
@@ -189,7 +190,7 @@ export class ProjectTextsContainer extends Component {
               to={lh.link("backendProjectTextsIngestionsNew", this.project.id)}
               className={this.buttonClasses}
             >
-              <span className="screen-reader-text">Add a new text</span>
+              <span className="screen-reader-text">Ingest a text</span>
               <IconComposer
                 icon="plus16"
                 size={18}
@@ -199,10 +200,31 @@ export class ProjectTextsContainer extends Component {
                 )}
               />
               <span className="full" aria-hidden="true">
-                Add a new text
+                Ingest a Text
               </span>
               <span className="abbreviated" aria-hidden="true">
-                Text
+                Ingest
+              </span>
+            </Link>
+
+            <Link
+              to={lh.link("backendProjectTextsNew", this.project.id)}
+              className={this.buttonClasses}
+            >
+              <span className="screen-reader-text">Create a text</span>
+              <IconComposer
+                icon="plus16"
+                size={18}
+                iconClass={classNames(
+                  "button-icon-secondary__icon",
+                  "button-icon-secondary__icon--large"
+                )}
+              />
+              <span className="full" aria-hidden="true">
+                Create a Text
+              </span>
+              <span className="abbreviated" aria-hidden="true">
+                Create
               </span>
             </Link>
 
@@ -210,7 +232,7 @@ export class ProjectTextsContainer extends Component {
               to={lh.link("backendProjectCategoriesNew", this.project.id)}
               className={this.buttonClasses}
             >
-              <span className="screen-reader-text">Add a new category</span>
+              <span className="screen-reader-text">Create a category</span>
               <IconComposer
                 icon="plus16"
                 size={18}
@@ -220,7 +242,7 @@ export class ProjectTextsContainer extends Component {
                 )}
               />
               <span className="full" aria-hidden="true">
-                Create a new category
+                Create a category
               </span>
               <span className="abbreviated" aria-hidden="true">
                 Category

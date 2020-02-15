@@ -381,6 +381,11 @@
       width: calc(50% - 8px);
       margin-bottom: 0;
     }
+
+    .buttons-icon-horizontal__button--thirds {
+      width: calc(33.333% - 8px);
+    }
+
   }
 
   @include respond($break85) {
