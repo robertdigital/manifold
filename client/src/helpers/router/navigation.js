@@ -363,6 +363,13 @@ class Navigation {
         args
       },
       {
+        label: "Text Sections",
+        route: "backendTextTextSections",
+        entity: text,
+        ability: "update",
+        args
+      },
+      {
         label: "People",
         route: "backendTextCollaborators",
         entity: text.relationships.project,

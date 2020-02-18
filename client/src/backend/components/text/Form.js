@@ -1,14 +1,27 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import FormContainer from "global/containers/form";
-import Form from "../../../global/components/form";
+import Form from "global/components/form";
+import { requests, textsAPI } from "api";
+import cloneDeep from "lodash/cloneDeep";
 
 export default class TextFormWrapper extends PureComponent {
   static displayName = "Text.Form.Wrapper";
 
   static propTypes = {};
 
-  createText = () => {};
+  createText = _data => {
+    const data = cloneDeep(_data);
+    if (!data.relationships) data.relationships = {};
+    data.relationships.project = {
+      data: {
+        type: "projects",
+        id: this.props.project.id
+      }
+    };
+
+    return textsAPI.create(data);
+  };
 
   render() {
     /* eslint-disable no-unused-vars */
@@ -20,13 +33,14 @@ export default class TextFormWrapper extends PureComponent {
         doNotWarn
         groupErrors
         model={{}}
-        name={"newText"}
-        update={this.createText}
+        name={requests.beTextCreate}
+        update={textsAPI.update}
         create={this.createText}
         className="form-secondary"
         onSuccess={this.props.onSuccess}
       >
-        <Form.TextInput label="Title" focusOnMount />
+        <Form.TextInput name="attributes[title]" label="Title" focusOnMount />
+        <Form.Save text="Save" />
       </FormContainer.Form>
     );
   }

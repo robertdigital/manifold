@@ -15,7 +15,7 @@ export default class TextNewContainer extends PureComponent {
     return (
       <>
         <Navigation.DrawerHeader title="Create Text" buttons={[]} />
-        <Text.Form />
+        <Text.Form project={this.props.project} />
       </>
     );
   }

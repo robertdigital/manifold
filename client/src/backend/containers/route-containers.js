@@ -7,6 +7,7 @@ import ResourceCollection from "backend/containers/resource-collection";
 import Project from "backend/containers/project";
 import Text from "backend/containers/text";
 import Stylesheet from "backend/containers/stylesheet";
+import TextSection from "backend/containers/text-section";
 import Makers from "backend/containers/makers";
 import Ingestion from "backend/containers/ingestion";
 import ProjectCollection from "backend/containers/project-collection";
@@ -42,6 +43,9 @@ export default {
   TextWrapper: Text.Wrapper,
   TextStyles: Text.Styles,
   StylesheetEdit: Stylesheet.Edit,
+  TextSections: Text.TextSections,
+  TextSectionNew: TextSection.New,
+  TextSectionEdit: TextSection.Edit,
   TextMetadata: Text.Metadata,
   TextCollaborators: Text.Collaborators,
   TextIngestionNew: Text.Ingestion.New,

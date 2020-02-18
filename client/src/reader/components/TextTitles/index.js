@@ -40,15 +40,19 @@ export default class TextTitles extends Component {
     const titleClass = classNames({
       "reader-header__title-bar": true,
       "reader-header__title-bar--show-section":
-        this.props.showSection && this.state.showSection
+        this.props.sectionTitle &&
+        this.props.showSection &&
+        this.state.showSection
     });
 
     return (
       /* eslint-disable jsx-a11y/no-static-element-interactions */
       <div className={titleClass} onClick={this.handleTitleClick}>
-        <h1 className="screen-reader-text">
-          {`${this.props.textTitle}: ${this.props.sectionTitle}`}
-        </h1>
+        {this.props.sectionTitle && (
+          <h1 className="screen-reader-text">
+            {`${this.props.textTitle}: ${this.props.sectionTitle}`}
+          </h1>
+        )}
         <h1 className="reader-header__title-bar-text" aria-hidden="true">
           <span
             className="reader-header__title-inner-text"

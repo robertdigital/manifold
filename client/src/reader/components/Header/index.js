@@ -189,13 +189,13 @@ export default class Header extends Component {
               />
               {this.renderContentsButton(this.props.text.attributes)}
             </div>
-            {this.props.section && (
-              <TextTitles
-                textTitle={this.props.text.attributes.titleFormatted}
-                sectionTitle={this.props.section.attributes.name}
-                showSection={!this.props.scrollAware.top}
-              />
-            )}
+            <TextTitles
+              textTitle={this.props.text.attributes.titleFormatted}
+              sectionTitle={
+                this.props.section && this.props.section.attributes.name
+              }
+              showSection={!this.props.scrollAware.top}
+            />
             <div className="reader-header__menu-group reader-header__menu-group--right">
               <ul
                 aria-label="Reader Settings and Search"

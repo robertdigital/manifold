@@ -88,7 +88,10 @@ module V1
       typed_has_many :stylesheets
       typed_has_many :creators, serializer: MakerSerializer, record_type: "maker"
       typed_has_many :contributors, serializer: MakerSerializer, record_type: "maker"
-      typed_has_many :text_sections
+      typed_has_many :text_sections do |object, _params|
+        object.text_sections
+      end
+
       typed_has_one :toc_section, serializer: TextSectionSerializer, record_type: "text_section"
     end
     # rubocop: enable Metrics/BlockLength

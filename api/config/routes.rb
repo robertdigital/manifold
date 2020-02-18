@@ -105,7 +105,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :text_sections, only: [:show] do
+      resources :text_sections do
         scope module: :text_sections do
           namespace :relationships do
             resources :annotations, only: [:index, :create, :update]

@@ -7,6 +7,7 @@ module Ingestions
     class TextSectionBody < AbstractInteraction
       object :text
       object :text_section
+      object :context, class: "Ingestions::Context", default: nil
 
       delegate :source_body, to: :text_section
       delegate :body, to: :text_section

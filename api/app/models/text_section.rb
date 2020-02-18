@@ -28,7 +28,7 @@ class TextSection < ApplicationRecord
   belongs_to :text, inverse_of: :text_sections
   has_one :text_started_by, class_name: "Text", foreign_key: "start_text_section_id",
           dependent: :nullify, inverse_of: :start_text_section
-  belongs_to :ingestion_source
+  belongs_to :ingestion_source, optional: true
   # We intentionally do not destroy annotations because we want to handle the orphans.
   has_many :annotations, dependent: :nullify
   has_many :resources, through: :annotations
@@ -51,11 +51,14 @@ class TextSection < ApplicationRecord
   delegate :social_image, to: :text
 
   # Validation
-  validates :position, numericality: { only_integer: true }
   validates :kind, inclusion: { in: ALLOWED_KINDS }
+
+  # Ordering
+  acts_as_list scope: [:text_id]
 
   # Callbacks
   after_commit :adopt_or_orphan_annotations!
+  before_save :recalculate_body_json, if: :will_save_change_to_body?
 
   # Scopes
   scope :in_texts, lambda { |texts|
@@ -176,6 +179,12 @@ class TextSection < ApplicationRecord
     return [] unless start_node.present? && end_node.present?
 
     text_nodes[text_nodes.index(start_node)..text_nodes.index(end_node)]
+  end
+
+  def recalculate_body_json
+    return unless body.present?
+
+    self.body_json = Serializer::Html.serialize_as_json(body)
   end
 
   private

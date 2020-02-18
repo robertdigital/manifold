@@ -15,6 +15,7 @@ import ResourceCollectionRow from "./Entity/ResourceCollectionRow";
 import SubjectRow from "./Entity/SubjectRow";
 import TwitterQueryRow from "./Entity/TwitterQueryRow";
 import UserRow from "./Entity/UserRow";
+import TextSectionRow from "./Entity/TextSectionRow";
 
 export default List;
 export {
@@ -33,5 +34,6 @@ export {
   ResourceCollectionRow,
   SubjectRow,
   TwitterQueryRow,
-  UserRow
+  UserRow,
+  TextSectionRow
 };

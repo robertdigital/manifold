@@ -9,6 +9,7 @@ module V1
     typed_attribute :social_image, Types::Serializer::URL.optional
     typed_attribute :source_identifier, Types::String.optional
     typed_attribute :kind, Types::String.meta(example: "section")
+    typed_attribute :position, Types::Integer
 
     typed_belongs_to :text
     typed_has_many :stylesheets
@@ -20,6 +21,7 @@ module V1
           description: "A JSON representation of the text section's HTML contents"
         )
       )
+      typed_attribute :body, Types::String
       typed_attribute :citations, Types::Serializer::Citations
     end
 

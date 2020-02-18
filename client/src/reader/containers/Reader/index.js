@@ -9,6 +9,7 @@ import Layout from "reader/components/layout";
 import Notes from "reader/components/notes";
 import Toc from "reader/components/Toc";
 import Footers from "global/components/Footers";
+import Section from "reader/components/section";
 import Header from "reader/components/Header";
 import ReaderNotes from "reader/containers/ReaderNotes";
 import { select, grab, isEntityLoaded } from "utils/entityUtils";
@@ -30,7 +31,7 @@ import get from "lodash/get";
 import ScrollAware from "hoc/scroll-aware";
 import BodyClass from "hoc/body-class";
 import Authorize from "hoc/authorize";
-
+console.log(Section, "section");
 const {
   selectFont,
   incrementFontSize,
@@ -133,6 +134,16 @@ export class ReaderContainer extends Component {
     return `reader ${colorScheme}`;
   }
 
+  get startTextSectionId() {
+    if (!this.props.text) return null;
+    return this.props.text.attributes.startTextSectionId;
+  }
+
+  get emptyText() {
+    if (!this.props.text) return true;
+    return this.props.text.relationships.textSections.length === 0;
+  }
+
   get transitionProps() {
     return {
       classNames: "overlay-full",
@@ -147,6 +158,7 @@ export class ReaderContainer extends Component {
   };
 
   shouldRedirect(props) {
+    if (!this.startTextSectionId) return false;
     const matches = matchRoutes(
       props.route.routes,
       this.props.location.pathname
@@ -218,11 +230,10 @@ export class ReaderContainer extends Component {
   }
 
   renderRedirect(props) {
-    const startTextSectionId = props.text.attributes.startTextSectionId;
     const path = lh.link(
       "readerSection",
       props.text.attributes.slug,
-      startTextSectionId
+      this.startTextSectionId
     );
     return <Redirect to={path} />;
   }
@@ -235,8 +246,13 @@ export class ReaderContainer extends Component {
     return childRoutes(this.props.route, { childProps, switch: false });
   }
 
+  renderEmpty() {
+    return <Section.Placeholder appearance={this.props.appearance} />;
+  }
+
   render() {
     if (!this.props.text) return null;
+
     if (this.shouldRedirect(this.props)) return this.renderRedirect(this.props);
 
     return (
@@ -272,7 +288,8 @@ export class ReaderContainer extends Component {
           />
           <main id="skip-to-main">
             {this.maybeRenderOverlay(this.props)}
-            {this.renderRoutes()}
+            {!this.emptyText && this.renderRoutes()}
+            {this.emptyText && this.renderEmpty()}
           </main>
           <Footers.ReaderFooter text={this.props.text} />
           <Layout.PostFooter />

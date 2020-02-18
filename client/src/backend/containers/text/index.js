@@ -4,6 +4,7 @@ import Wrapper from "./Wrapper";
 import Collaborators from "./Collaborators";
 import Ingestion from "./ingestion";
 import Styles from "./Styles";
+import TextSections from "./TextSections";
 
 export default {
   General,
@@ -11,5 +12,6 @@ export default {
   Wrapper,
   Collaborators,
   Ingestion,
-  Styles
+  Styles,
+  TextSections
 };

@@ -150,6 +150,28 @@ const routes = {
           helper: t => `/backend/projects/text/${t}`,
           routes: [
             {
+              name: "backendTextTextSections",
+              component: "TextSections",
+              exact: true,
+              path: "/backend/projects/text/:id/text_sections",
+              helper: t => `/backend/projects/text/${t}/text_sections`
+            },
+            {
+              name: "backendTextTextSectionNew",
+              component: "TextSectionNew",
+              exact: true,
+              path: "/backend/projects/text/:id/text-sections/new",
+              helper: t => `/backend/projects/text/${t}/text-sections/new`
+            },
+            {
+              name: "backendTextTextSectionEdit",
+              component: "TextSectionEdit",
+              exact: true,
+              path: "/backend/projects/text/:id/text-sections/:textSection",
+              helper: (t, ts) =>
+                `/backend/projects/text/${t}/text-sections/${ts}`
+            },
+            {
               name: "backendTextStyles",
               component: "TextStyles",
               exact: true,

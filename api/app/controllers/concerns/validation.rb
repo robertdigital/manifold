@@ -254,7 +254,15 @@ module Validation
     attributes = [:title, :position, :description, :publication_date,
                   metadata(Text), :section_kind, :subtitle, :published,
                   :pending_slug]
-    relationships = [:category, :contributors, :creators]
+    relationships = [:project, :category, :contributors, :creators]
+    param_config = structure_params(attributes: attributes, relationships: relationships)
+    params.permit(param_config)
+  end
+
+  def text_section_params
+    params.require(:data)
+    attributes = [:name, :body, :kind, :position]
+    relationships = []
     param_config = structure_params(attributes: attributes, relationships: relationships)
     params.permit(param_config)
   end

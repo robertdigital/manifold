@@ -7,13 +7,11 @@ module Api
         Text.all
       end
 
-      # GET /texts
       def index
         @texts = load_texts
         render_multiple_resources @texts, include: [:project]
       end
 
-      # GET /texts/1
       def show
         @text = scope_for_texts.includes(:project, :text_sections, :stylesheets,
                                          :toc_section)
@@ -52,10 +50,14 @@ module Api
       protected
 
       def includes
-        [:project, :category, :creators, :contributors, :stylesheets]
+        [:project, :category, :creators, :contributors, :stylesheets, :text_sections]
       end
 
       def scope_for_texts
+        if action_name == "create"
+          project_id = params.dig(:data, :relationships, :project, :data, :id)
+          return Project.find(project_id).texts
+        end
         Text.friendly
       end
 

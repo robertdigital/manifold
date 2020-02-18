@@ -4,6 +4,7 @@ import Label from "./Label";
 import NextSection from "./NextSection";
 import Pagination from "./Pagination";
 import Text from "./Text";
+import Placeholder from "./Placeholder";
 
 export default {
   BodyNodes,
@@ -11,5 +12,6 @@ export default {
   Label,
   NextSection,
   Pagination,
-  Text
+  Text,
+  Placeholder
 };
