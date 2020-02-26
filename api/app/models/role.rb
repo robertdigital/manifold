@@ -10,6 +10,7 @@ class Role < ApplicationRecord
   ROLE_PROJECT_RESOURCE_EDITOR = "project_resource_editor".freeze
   ROLE_PROJECT_AUTHOR = "project_author".freeze
   ROLE_READER = "reader".freeze
+  ENTITLEMENT_ROLES = EntitlementRoleName.map(&:to_s).freeze
 
   GLOBAL_ROLES = [
     ROLE_ADMIN,
@@ -33,7 +34,8 @@ class Role < ApplicationRecord
 
   ALLOWED_ROLES = [
     GLOBAL_ROLES,
-    SCOPED_ROLES
+    SCOPED_ROLES,
+    ENTITLEMENT_ROLES,
   ].flatten.freeze
 
   scopify

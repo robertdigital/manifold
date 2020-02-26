@@ -93,6 +93,7 @@ class Project < ApplicationRecord
   has_many :subjects, through: :project_subjects
   has_many :ingestions, dependent: :destroy, inverse_of: :project
   has_many :twitter_queries, dependent: :destroy, inverse_of: :project
+  has_many :project_role_entitlements, dependent: :destroy, inverse_of: :project
   # rubocop:disable Rails/HasManyOrHasOneDependent
   has_many :permissions, as: :resource, inverse_of: :resource
   # rubocop:enable Rails/HasManyOrHasOneDependent

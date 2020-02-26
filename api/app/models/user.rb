@@ -40,6 +40,8 @@ class User < ApplicationRecord
   has_many :reading_group_memberships, dependent: :destroy
   has_many :reading_groups, through: :reading_group_memberships
 
+  has_many :entitlements, inverse_of: :user, dependent: :destroy
+
   # rubocop:disable Rails/HasManyOrHasOneDependent
   has_many :permissions
   # rubocop:enable Rails/HasManyOrHasOneDependent

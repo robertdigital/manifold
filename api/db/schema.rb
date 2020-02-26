@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_29_200459) do
+ActiveRecord::Schema.define(version: 2020_02_25_231650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -171,6 +171,34 @@ ActiveRecord::Schema.define(version: 2019_12_29_200459) do
     t.uuid "project_id"
     t.boolean "visible", default: true, null: false
     t.index ["project_id"], name: "index_content_blocks_on_project_id"
+  end
+
+  create_table "entitlements", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "entitler_id", null: false
+    t.string "subject_type", null: false
+    t.uuid "subject_id", null: false
+    t.text "kind", default: "unknown", null: false
+    t.text "description", default: "", null: false
+    t.jsonb "roles", default: {}, null: false
+    t.jsonb "options", default: {}, null: false
+    t.jsonb "metadata", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entitler_id"], name: "index_entitlements_on_entitler_id"
+    t.index ["subject_type", "subject_id"], name: "index_entitlements_on_subject_type_and_subject_id"
+    t.index ["user_id", "entitler_id", "subject_id", "subject_type"], name: "index_entitlements_uniqueness", unique: true
+    t.index ["user_id"], name: "index_entitlements_on_user_id"
+  end
+
+  create_table "entitlers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "entity_type", null: false
+    t.uuid "entity_id", null: false
+    t.text "name", null: false
+    t.jsonb "metadata", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entity_type", "entity_id"], name: "index_entitlers_entity_uniqueness", unique: true
   end
 
   create_table "events", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
@@ -1001,6 +1029,8 @@ ActiveRecord::Schema.define(version: 2019_12_29_200459) do
   add_foreign_key "annotations", "reading_groups", on_delete: :nullify
   add_foreign_key "cached_external_source_links", "cached_external_sources", on_delete: :cascade
   add_foreign_key "cached_external_source_links", "texts", on_delete: :cascade
+  add_foreign_key "entitlements", "entitlers", on_delete: :restrict
+  add_foreign_key "entitlements", "users", on_delete: :cascade
   add_foreign_key "identities", "users", on_delete: :cascade
   add_foreign_key "import_selection_matches", "annotations", on_delete: :nullify
   add_foreign_key "import_selection_matches", "import_selections", on_delete: :cascade
